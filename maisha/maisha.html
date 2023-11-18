@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#ffc40d">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Jon Stocksdale</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            font-size: 100%;
+            font-family: Arial;
+
+        }
+
+        body,
+        html {
+            background: #7e540b;
+            width: 100%;
+            height: 100%;
+        }
+
+        #main {
+            position: fixed;
+            width: 100%;
+            left: 50%;
+            margin: 0px;
+            padding: 0px;
+            top: 0px;
+            margin-left: -50%;
+            font-size: 1.5em;
+            background: #f4eacb;
+            height: 100%;
+            overflow: hidden;
+            box-shadow: 0px 0px 100px rgb(0, 0, 0, .2);
+        }
+
+        #content.shrink {
+            position: absolute;
+            top: 5%;
+            left: 0%;
+            height: 90%;
+        }
+
+        #content {
+            position: absolute;
+            top: 10%;
+            left: 0%;
+            height: 80%;
+            width: 100%;
+            transition: top .3s;
+        }
+
+        #mainpic {
+            position: relative;
+            width: 80%;
+            left: 50%;
+            margin-left: -40%;
+        }
+
+        #logo.shrink {
+            max-height: 10%;
+            width: 100%;
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-top: 0px;
+            font-size: 2rem;
+
+        }
+
+        #logo {
+            max-height: 10%;
+            height: 10%;
+            width: 100%;
+            background: #f4eacb;
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            transition: max-height .3s;
+            padding-top: .5rem;
+            font-size: 3rem;
+            font-weight: bolder;
+        }
+
+        #logo p {
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            font-size: 80%;
+        }
+
+
+        #logo img {
+            max-height: 105%;
+            width: auto;
+            margin: auto;
+            transition: max-height .3s;
+            max-width: 100%;
+        }
+
+
+
+        p,
+        h2 {
+            margin-top: 1em;
+        }
+
+        li {
+            margin-left: 2em;
+        }
+
+        #tabs {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 4px;
+
+        }
+
+        #tabs.shrink label {
+            padding: 0;
+        }
+
+        #tabs label {
+            -webkit-box-ordinal-group: 2;
+            -webkit-order: 1;
+            -ms-flex-order: 1;
+            order: 1;
+            display: block;
+            margin: 3px;
+            box-shadow: 5px 5px 8px rgb(0, 0, 0, .2);
+            flex-grow: 1;
+            text-align: center;
+            cursor: pointer;
+            background: black;
+            color: grey;
+            font-weight: bold;
+            -webkit-transition: background ease 0.2s;
+            transition: transform ease 0.2s, box-shadow ease .2s;
+            padding: .5rem;
+            padding-left: 0;
+            padding-right: 0;
+            vertical-align: middle;
+            font-size: x-large;
+        }
+
+
+        #innertabs label {
+            background: darkgrey;
+            color: black;
+            padding: 1rem;
+            font-size: medium;
+        }
+
+        #tabs .tab {
+            background: #f4eacb;
+            -webkit-box-ordinal-group: 100;
+            -webkit-order: 99;
+            -ms-flex-order: 99;
+            order: 99;
+            -webkit-box-flex: 1;
+            -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            width: 100%;
+            overflow-y: scroll;
+            display: block;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            max-height: 0px;
+            opacity: 1;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            transition: max-height .5s;
+        }
+
+        dd,
+        li {
+            margin-bottom: .5em;
+        }
+
+        dd li {
+            margin-bottom: 0;
+        }
+
+        #tabs input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        #tabs input[type="radio"]:checked+label {
+            color: white;
+            font-size: x-large;
+            background-color: #624507;
+        }
+
+        #tabs input[type="radio"]+label:hover {
+            color: white;
+            font-size: x-large;
+            background-color: #be9013;;
+        }
+
+        #tabs input[type="radio"]:checked+label:hover {
+            background-color: #624507;
+        }
+
+        #tabs input[type="radio"]:checked+label+.tab {
+            max-height: 1000px;
+            opacity: 1;
+            order: 100;
+
+        }
+
+        #tabs input[type="radio"]+label:active {
+            background-color: #be9013;
+            transform: translateY(4px);
+            box-shadow: 1px 1px 1px grey;
+        }
+
+        #tabs .tab div.innercontent {
+            padding-bottom: 1000px;
+        }
+
+
+        @media screen and (min-width: 36em) {
+            #main {
+                width: 80%;
+                left: 50%;
+                margin-left: -40%;
+            }
+        }
+
+        @media (max-width: 35em) {
+
+
+            #tabs {
+                margin: 0px;
+            }
+
+            #tabs .tab,
+            #tabs label {
+                -webkit-box-ordinal-group: NaN;
+                -webkit-order: initial;
+                -ms-flex-order: initial;
+                order: initial;
+            }
+
+            #tabs .tab {
+                transition: opacity 0s, max-height 0s;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
+            #tabs label {
+                width: 100%;
+                margin-right: 0;
+                margin-top: 0.2rem;
+                color: white;
+            }
+
+            #innertabs label {
+                background: darkgrey;
+                color: black;
+            }
+
+            #tabs input label:hover {
+                background: black;
+            }
+
+            #tabs input[type="radio"]:checked+label+.tab {
+                height: auto;
+                max-height: 10000px;
+                order: initial;
+            }
+
+            #content {
+                overflow-y: scroll;
+            }
+
+            #tabs .tab div.innercontent {
+                padding-bottom: 10px;
+            }
+
+            #tabs input[type="radio"]:checked+label {
+                text-decoration: none;
+            }
+
+        }
+
+        #screens {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #screens div {
+            flex-direction: column;
+            justify-content: space-around;
+            width: 50%;
+            margin: 20px;
+            text-align: center;
+        }
+
+        dt {
+            font-size: 1em;
+            font-weight: bold;
+        }
+
+        dd {
+            margin-left: 10%;
+        }
+
+        ul.vision li {
+            list-style-type: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div id="main">
+        <div id="logo">
+            Maisha Cottage
+        </div>
+
+
+        <div id="content">
+            <div id="tabs">
+                <input type="radio" name="tabs" id="hometab" checked="checked">
+                <label for="hometab">Home</label>
+                <div id="tabone" class="tab">
+                    <div class="innercontent">
+
+                        <p style="font-style: italic">
+                            We created Maisha Cottage in 2009 to be a place of rest and refreshment for ourselves and
+                            others.
+                            We hope it is for you, too.
+                        </p>
+                        <p>
+                            <img id="mainpic" src="MaishaSmall.jpg" />
+                        </p>
+                        <p>
+                            The home is about 15 to 20 minutes drive from Naivasha town. About an hour and a half from
+                            Nairobi.
+                        </p>
+                        <p>
+                            There is a master bedroom loft with a queen size bed, a master bath, and an inside and
+                            outside balcony. There are two other bedrooms downstairs that share another bathroom. One
+                            room has a queen size bed and the other has a single bed and a bunk bed.
+                        </p>
+                        <p>
+                            There is a fully equiped kitchen with stove, refridgerator, microwave, and pots and pans and
+                            dishes.
+                        </p>
+                        <p>
+                            There is a dining table for 6+ inside and two more similar size tables outside on the
+                            covered porch. There is also a picnic table in the yard, plus many chairs and swings around
+                            the home.
+                        </p>
+                        <p>
+                            There is fireplace inside, a charcoal grill outside, and a fire pit in the yard.
+                        </p>
+
+                    </div>
+                </div>
+                <input type="radio" name="tabs" id="pictab">
+                <label for="pictab">Pictures</label>
+                <div class="tab">
+                    <div class="innercontent">
+                        <p>Photos:</p>
+
+                    </div>
+
+                </div>
+
+                <input type="radio" name="tabs" id="videotab">
+                <label for="videotab">Videos</label>
+                <div class="tab">
+                    <div class="innercontent">
+                        <p> Videos </p>
+
+                    </div>
+                </div>
+
+                <input type="radio" name="tabs" id="bookingtab">
+                <label for="bookingtab">Bookings</label>
+                <div class="tab">
+                    <div class="innercontent">
+                        <p> Bookings and Rates </p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <script>
+            var alreadyshrink = false;
+            function addshrink() {
+                if (!alreadyshrink) {
+                    alreadyshrink = true;
+                    window.document.getElementById("content").classList.add('shrink');
+                    window.document.getElementById("tabs").classList.add('shrink');
+                    window.document.getElementById("logo").classList.add('shrink');
+                }
+            }
+
+
+            window.addEventListener('hashchange', function () {
+                if (window.location.hash.substr(1)) {
+                    window.document.getElementById(window.location.hash.substr(1) + "tab").checked = true;
+                    addshrink();
+                }
+                else
+                    window.document.getElementById("visiontab").checked = true;
+
+            }, false);
+
+            function returnhome() {
+                window.document.getElementById("visiontab").checked = true;
+                alreadyshrink = false;
+                window.document.getElementById("content").classList.remove('shrink');
+                window.document.getElementById("tabs").classList.remove('shrink');
+                window.document.getElementById("innertabs").classList.add('shrink');
+                window.document.getElementById("logo").classList.remove('shrink');
+
+            }
+
+            /*         var elements = window.document.querySelectorAll('input');
+                    for (var i = 0; i < elements.length; i++) {
+                        elements[i].addEventListener('click', function () {
+                            addshrink();
+                        }, false);
+                    } */
+
+            var elements = window.document.getElementsByClassName('tab');
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].addEventListener('scroll', function () {
+                    addshrink();
+                }, false);
+
+            }
+            window.document.getElementById("content").addEventListener('scroll', function () {
+                addshrink();
+            }, false);
+
+
+
+
+        </script>
+
+</body>
+
+</html>
