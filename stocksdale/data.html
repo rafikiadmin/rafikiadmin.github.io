@@ -1,3 +1,326 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name='viewport'
+            content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
+        <link rel="apple-touch-icon" sizes="180x180"
+            href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32"
+            href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16"
+            href="/favicon-16x16.png">
+        <link rel="manifest" href="/site.webmanifest">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#ffc40d">
+        <meta name="theme-color" content="#ffffff">
+
+        <title>Jon Stocksdale</title>
+
+        <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: 0;
+            font-size: 100%;
+            font-family: Arial;
+    
+        }
+    
+        body,
+        html {
+            background: #093555;
+            width: 100%;
+            height: 100%;
+        }
+    
+        #main {
+            position: fixed;
+            width: 100%;
+            left: 50%;
+            margin:0px;
+            padding:0px;
+            top: 0px;
+            margin-left: -50%;
+            font-size: 1.5em;
+            background: #EEE;
+            height: 100%;
+            overflow: hidden;
+            box-shadow: 0px 0px 100px rgb(0, 0, 0, .2);
+        }
+    
+        #content.shrink {
+            position: absolute;
+            top: 10%;
+            left: 0%;
+            height: 90%;
+        }
+    
+        #content {
+            position: absolute;
+            top: 20%;
+            left: 0%;
+            height: 80%;
+            width: 100%;
+            transition: top .3s;
+        }
+    
+        #logo.shrink {
+            max-height: 10%;
+            height: 10%;
+            width: 100%;
+            background: #EEE;
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+    
+        }
+    
+        #logo {
+            top:0px;
+            left:0px;
+            max-height: 20%;
+            height: 20%;
+            width: 100%;
+            background: #EEE;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content:start;
+            transition: max-height .3s;
+        }
+    
+        #logo img {
+            max-height: 105%;
+            width: auto;
+            margin: auto;
+            transition: max-height .3s;
+            max-width: 100%;
+        }
+    
+
+    
+        p,
+        h2 {
+            margin-top: 1em;
+        }
+    
+        li {
+            margin-left: 2em;
+        }
+    
+        #tabs {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 4px;
+    
+        }
+    
+        #tabs.shrink label {
+            padding: 0;
+        }
+    
+        #tabs label {
+            -webkit-box-ordinal-group: 2;
+            -webkit-order: 1;
+            -ms-flex-order: 1;
+            order: 1;
+            display: block;
+            margin: 3px;
+            box-shadow: 5px 5px 8px rgb(0, 0, 0, .2);
+            flex-grow: 1;
+            text-align: center;
+            cursor: pointer;
+            background: black;
+            color: grey;
+            font-weight: bold;
+            -webkit-transition: background ease 0.2s;
+            transition: transform ease 0.2s, box-shadow ease .2s;
+            padding: .5rem;
+            padding-left: 0;
+            padding-right: 0;
+            vertical-align: middle;
+            font-size: x-small;
+        }
+
+
+        #innertabs label {
+            background: darkgrey;
+            color: black;
+            padding: 1rem;
+            font-size: medium;
+        }
+    
+        #tabs .tab {
+            background: #e5e5f1;
+            -webkit-box-ordinal-group: 100;
+            -webkit-order: 99;
+            -ms-flex-order: 99;
+            order: 99;
+            -webkit-box-flex: 1;
+            -webkit-flex-grow: 1;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            width: 100%;
+            overflow-y: scroll;
+            display: block;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            max-height: 0px;
+            opacity: 1;
+            padding-left: 3rem;
+            padding-right: 3rem;
+            transition: max-height .5s;
+        }
+
+        dd, li {
+            margin-bottom: .5em;
+        }
+        dd li {
+            margin-bottom: 0;
+        }
+    
+        #tabs input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        #tabs input[type="radio"]:checked+label {
+            color: white;
+            font-size: x-large;
+            background-color: #093555;
+        }
+    
+        #tabs input[type="radio"]+label:hover {
+            color: white;
+            font-size: x-large;
+            background-color: #1378BE;
+        }
+        #tabs input[type="radio"]:checked+label:hover {
+            background-color: #093555;
+        }
+    
+        #tabs input[type="radio"]:checked+label+.tab {
+            max-height: 1000px;
+            opacity: 1;
+            order: 100;
+    
+        }
+    
+        #tabs input[type="radio"]+label:active {
+            background-color: #1378BE;
+            transform: translateY(4px);
+            box-shadow: 1px 1px 1px grey;
+        }
+    
+        #tabs .tab div.innercontent {
+            padding-bottom: 1000px;
+        }
+    
+    
+        @media screen and (min-width: 36em) {
+            #main {
+                width: 80%;
+                left: 50%;
+                margin-left: -40%;
+            }
+        }
+    
+        @media (max-width: 35em) {
+
+
+            #tabs {
+                margin: 0px;
+            }
+    
+            #tabs .tab,
+            #tabs label {
+                -webkit-box-ordinal-group: NaN;
+                -webkit-order: initial;
+                -ms-flex-order: initial;
+                order: initial;
+            }
+    
+            #tabs .tab {
+                transition: opacity 0s, max-height 0s;
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+    
+            #tabs label {
+                width: 100%;
+                margin-right: 0;
+                margin-top: 0.2rem;
+                color: white;
+            }
+            #innertabs label {
+            background: darkgrey;
+            color: black;
+        }
+    
+            #tabs input label:hover {
+                background: black;
+            }
+    
+            #tabs input[type="radio"]:checked+label+.tab {
+                height: auto;
+                max-height: 10000px;
+                order: initial;
+            }
+    
+            #content {
+                overflow-y: scroll;
+            }
+    
+            #tabs .tab div.innercontent {
+                padding-bottom: 10px;
+            }
+    
+            #tabs input[type="radio"]:checked+label {
+                text-decoration: none;
+            }
+    
+        }
+    
+        #screens {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+        }
+    
+        #screens div {
+            flex-direction: column;
+            justify-content: space-around;
+            width: 50%;
+            margin: 20px;
+            text-align: center;
+        }
+
+        dt {
+            font-size: 1em;
+            font-weight: bold;
+        }
+        dd {
+            margin-left: 10%;
+        }
+        ul.vision li {
+            list-style-type: none;
+        }
+    </style>
+
+    </head>
+
+    <body>
   <h1>Test</h1>
+      </body>
 </html>
