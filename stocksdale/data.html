@@ -42,65 +42,31 @@
             padding:0px;
             top: 0px;
             margin-left: -50%;
+
             font-size: 1.5em;
             background: #EEE;
             height: 100%;
             overflow: hidden;
             box-shadow: 0px 0px 100px rgb(0, 0, 0, .2);
         }
-    
-        #content.shrink {
-            position: absolute;
-            top: 10%;
-            left: 0%;
-            height: 90%;
-        }
+
     
         #content {
             position: absolute;
-            top: 20%;
             left: 0%;
-            height: 80%;
+            height: 90%;
             width: 100%;
-            transition: top .3s;
-        }
-    
-        #logo.shrink {
-            max-height: 10%;
-            height: 10%;
-            width: 100%;
-            background: #EEE;
-            position: absolute;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-    
-        }
-    
-        #logo {
-            top:0px;
-            left:0px;
-            max-height: 20%;
-            height: 20%;
-            width: 100%;
-            background: #EEE;
-            position: absolute;
-            display: flex;
-            flex-direction: column;
-            justify-content:start;
-            transition: max-height .3s;
-        }
-    
-        #logo img {
-            max-height: 105%;
-            width: auto;
-            margin: auto;
-            transition: max-height .3s;
-            max-width: 100%;
-        }
-    
 
-    
+overflow-y: scroll;
+        }
+
+#bottom {
+position:absolute;
+left: 5%;
+top: 90%;
+font-size: small;
+}
+     
         p,
         h2 {
             margin-top: 1em;
@@ -110,118 +76,13 @@
             margin-left: 2em;
         }
     
-        #tabs {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: -ms-flexbox;
-            display: flex;
-            -webkit-flex-wrap: wrap;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            margin: 4px;
+       
     
-        }
-    
-        #tabs.shrink label {
-            padding: 0;
-        }
-    
-        #tabs label {
-            -webkit-box-ordinal-group: 2;
-            -webkit-order: 1;
-            -ms-flex-order: 1;
-            order: 1;
-            display: block;
-            margin: 3px;
-            box-shadow: 5px 5px 8px rgb(0, 0, 0, .2);
-            flex-grow: 1;
-            text-align: center;
-            cursor: pointer;
-            background: black;
-            color: grey;
-            font-weight: bold;
-            -webkit-transition: background ease 0.2s;
-            transition: transform ease 0.2s, box-shadow ease .2s;
-            padding: .5rem;
-            padding-left: 0;
-            padding-right: 0;
-            vertical-align: middle;
-            font-size: x-small;
-        }
-
-
-        #innertabs label {
-            background: darkgrey;
-            color: black;
-            padding: 1rem;
-            font-size: medium;
-        }
-    
-        #tabs .tab {
-            background: #e5e5f1;
-            -webkit-box-ordinal-group: 100;
-            -webkit-order: 99;
-            -ms-flex-order: 99;
-            order: 99;
-            -webkit-box-flex: 1;
-            -webkit-flex-grow: 1;
-            -ms-flex-positive: 1;
-            flex-grow: 1;
-            width: 100%;
-            overflow-y: scroll;
-            display: block;
-            position: relative;
-            top: 0px;
-            left: 0px;
-            max-height: 0px;
-            opacity: 1;
-            padding-left: 3rem;
-            padding-right: 3rem;
-            transition: max-height .5s;
-        }
-
-        dd, li {
-            margin-bottom: .5em;
-        }
-        dd li {
-            margin-bottom: 0;
-        }
-    
-        #tabs input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-        }
-
-        #tabs input[type="radio"]:checked+label {
-            color: white;
-            font-size: x-large;
-            background-color: #093555;
-        }
-    
-        #tabs input[type="radio"]+label:hover {
-            color: white;
-            font-size: x-large;
-            background-color: #1378BE;
-        }
-        #tabs input[type="radio"]:checked+label:hover {
-            background-color: #093555;
-        }
-    
-        #tabs input[type="radio"]:checked+label+.tab {
-            max-height: 1000px;
-            opacity: 1;
-            order: 100;
-    
-        }
-    
-        #tabs input[type="radio"]+label:active {
-            background-color: #1378BE;
-            transform: translateY(4px);
-            box-shadow: 1px 1px 1px grey;
-        }
-    
-        #tabs .tab div.innercontent {
+div.innercontent {
+position: absolute;
+height: 100%;
+width: 90%;
+left: 5%;
             padding-bottom: 1000px;
         }
     
@@ -237,93 +98,131 @@
         @media (max-width: 35em) {
 
 
-            #tabs {
-                margin: 0px;
-            }
-    
-            #tabs .tab,
-            #tabs label {
-                -webkit-box-ordinal-group: NaN;
-                -webkit-order: initial;
-                -ms-flex-order: initial;
-                order: initial;
-            }
-    
-            #tabs .tab {
-                transition: opacity 0s, max-height 0s;
-                padding-left: 1rem;
-                padding-right: 1rem;
-            }
-    
-            #tabs label {
-                width: 100%;
-                margin-right: 0;
-                margin-top: 0.2rem;
-                color: white;
-            }
-            #innertabs label {
-            background: darkgrey;
-            color: black;
-        }
-    
-            #tabs input label:hover {
-                background: black;
-            }
-    
-            #tabs input[type="radio"]:checked+label+.tab {
-                height: auto;
-                max-height: 10000px;
-                order: initial;
-            }
-    
+           
             #content {
                 overflow-y: scroll;
             }
     
-            #tabs .tab div.innercontent {
-                padding-bottom: 10px;
-            }
-    
-            #tabs input[type="radio"]:checked+label {
-                text-decoration: none;
-            }
-    
         }
     
-        #screens {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            justify-content: space-around;
-            align-items: center;
-        }
-    
-        #screens div {
-            flex-direction: column;
-            justify-content: space-around;
-            width: 50%;
-            margin: 20px;
-            text-align: center;
-        }
-
-        dt {
-            font-size: 1em;
-            font-weight: bold;
-        }
-        dd {
-            margin-left: 10%;
-        }
-        ul.vision li {
-            list-style-type: none;
-        }
     </style>
 
     </head>
 
     <body>
-        <div class="innercontent">
-  <h1>Test</h1>
-        </div>
+
+        <div id="main">  
+            <div id="content" >
+<div class="innercontent">
+
+
+<h1>My Data Vision</h1>
+<p>
+                                Today everyone loves data and loves talking
+                                about data and data goes well with everything:
+                                Warehouses, Lakes, Science, Decision-Making,
+                                etc. “Machine learning” and “neural networks”
+                                enable us to crunch massive amounts of data to
+                                gain intelligence and enable effective
+                                visualization and communication. Somehow,
+                                though, we still struggle to get, work with, and
+                                understand the very information we need to do so
+                                much of what we want to do. Why?
+                            </p><p>
+                                We humans are meaning-makers. Unlike a digital
+                                camera sensor detecting any light that hits it,
+                                we are constantly filtering, attending to,
+                                transforming and organizing the information that
+                                bombards our eyes and ears. I think we should
+                                consider the same approach for our technology
+                                systems and solutions. Since storage space has
+                                become cheap, we tend collect everything we
+                                possibly can and worry about making sense of it
+                                all later. Sometimes that is appropriate and
+                                valuable, but not always. In many cases, it is
+                                better to architect storage solutions that
+                                organize and structure our data so that it makes
+                                sense and we can avoid excessive “processing”
+                                and “changing” later.
+                            </p><p>
+                                Specifically, I like architecting solutions that
+                                organize data into Entities and Relationships. I
+                                prefer to think of data as either immutable
+                                “entities” or time-based (event-based)
+                                relationships between entities.
+                            </p><p>
+                                What this means in practice is that the
+                                attributes we associate directly with an Entity
+                                type rarely, if ever, change. (For example, if a
+                                person is an entity type, things like name,
+                                birthdate, gender, etc. mostly do not change.)
+                                Other things “about” that entity might change,
+                                but those things are probably are not directly
+                                associated with (or “belong” to) the entity.
+                                Instead, they are time-based relationships to
+                                other entities. Think of a job as one simple
+                                example: Joe (entity) worked as (relationship)
+                                Lead Programmer (entity) from June 1985 to July
+                                1990 (time). Joe’s current relationships can be
+                                structured the same way (Entity – Relationship –
+                                Entity – time), with the only difference that
+                                they have a start date-time without an end
+                                date-time.
+                            </p><p>
+                                While I am disinclined to take an
+                                absolutist/purist approach to any problem
+                                (reality has a way of intruding on our best
+                                plans), I generally think data can fit into one
+                                of these two structures and it can be an
+                                extremely powerful way to manage data. In its
+                                most pure form, this concept could be used to
+                                build unique write-only systems that have their
+                                own data tracking and logging because the data
+                                never really “changes”, it just naturally
+                                becomes historical as end date-times are
+                                assigned.
+                            </p><p>
+                                These concepts are understood by both technical
+                                and non-technical users alike. Thinking in terms
+                                of entities and relationships allows intelligent
+                                discussion about solutions among all developers
+                                and stakeholders. And sometimes, simply allowing
+                                users to consume data in these structured ways
+                                is enough to help them become effective in their
+                                work.
+                            </p><p>
+                                Even if constraints prevent us from building
+                                data systems this way, simply thinking about our
+                                most important entities and relationships is
+                                beneficial to design and engineering processes.
+                                Defining core entities and relationships can
+                                provide models for re-envisioning even data that
+                                is not currently structured that way. That can
+                                lead to user interfaces, reporting, analysis,
+                                automation, and data consumption and
+                                distribution systems that are quicker to build,
+                                easier to maintain, and more intuitive for
+                                users.
+                            </p><p>
+                                Rafiki Systems, my failed effort at a new school
+                                software platform, was not designed to replace
+                                existing school solutions as much as it was to
+                                wrap a better model around existing data. The
+                                vision was to allow existing, less ideal, but
+                                extremely useful legacy systems to continue as
+                                normal, while new development – including a
+                                portal to display that legacy data – could be
+                                built faster and in ways that worked better for
+                                the users.
+                            </p>
+  
+</div>
+</div>
+<div id="bottom">
+<p>
+<a href=".">Jon's Home Page</a>
+</p>
+</div>
+</div>
       </body>
-    
 </html>
